@@ -1,8 +1,14 @@
 import express from "express";
-import { HomeIndex } from "../controllers/bookCon.js";
+import { CreateBook, DeleteBook, 
+    FetchAllBooks, GetOneBook, 
+    UpdateBook } from "../controllers/bookCon.js";
 
 export const bookRt = express();
-    bookRt.get("/", HomeIndex);
+    bookRt.post("/", CreateBook);
+    bookRt.get("/", FetchAllBooks);
+    bookRt.get("/:id", GetOneBook);
+    bookRt.put("/:id", UpdateBook);
+    bookRt.delete("/:id", DeleteBook);
 
 
 
