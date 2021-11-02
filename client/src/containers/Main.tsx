@@ -1,23 +1,27 @@
 import React from "react";
+import Loader from "react-loader-spinner";
+import { Book } from "../components/Book";
 import { useQuery } from "react-query";
 import { fetchAllBooks } from "../global/FetchAPI";
 
 export const Main = (): JSX.Element => {
-    const { data } = useQuery("books", fetchAllBooks);
+    const { error, isLoading, isError, data } = 
+    useQuery("books", fetchAllBooks);
+
+    if (isLoading) <Loader type="ThreeDots" color="#ccc" />;
+    if (isError) <span>Error: {error}</span>;
 
     return (
         <React.Fragment>
             {data?.map((book) => (
-                <main key={book.id} className="container">
-                    <section>
-                        <p>{book.title}</p>
-                        <p>{book.author}</p>
-                        <p>age: {book.age}</p>
-                        <p>{book.info}</p>
-                        <button>Edit</button>
-                        <button>Delete</button>
-                    </section>
-                </main>
+                <Book 
+                    key={book.id}
+                    id={book.id}
+                    title={book.title}
+                    author={book.author}
+                    age={book.age}
+                    info={book.info}
+                />
             ))}
         </React.Fragment>
     );

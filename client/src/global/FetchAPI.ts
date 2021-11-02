@@ -38,8 +38,8 @@ async (book: IBook): Promise<IBook> => {
 };
 
 export const deleteBook =
-async (book: IBook): Promise<IBook> => {
-    const res: Response = await fetch(`${URL}/${book.id}`, {
+async (id: number): Promise<IBook> => {
+    const res: Response = await fetch(`${URL}/${id}`, {
         method: "DELETE"
     });
     if (!res.ok) throw new Error("Something's BAD");
