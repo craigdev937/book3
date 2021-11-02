@@ -1,6 +1,6 @@
 import React from "react";
 import "./App.css";
-import { Main } from "../containers/Main";
+import { Routes } from "../pages/Routes";
 import { QueryClient, QueryClientProvider } from "react-query";
 import { ReactQueryDevtools } from "react-query-devtools";
 
@@ -10,7 +10,7 @@ export const App = (): JSX.Element => {
     return (
         <React.Fragment>
             <QueryClientProvider client={QClient}>
-                <Main />
+                <Routes />
                 <ReactQueryDevtools initialIsOpen={false} />
             </QueryClientProvider>
         </React.Fragment>

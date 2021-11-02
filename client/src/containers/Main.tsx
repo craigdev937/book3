@@ -1,10 +1,24 @@
 import React from "react";
+import { useQuery } from "react-query";
+import { fetchAllBooks } from "../global/FetchAPI";
 
 export const Main = (): JSX.Element => {
+    const { data } = useQuery("books", fetchAllBooks);
+
     return (
         <React.Fragment>
-            <h1>Main</h1>
-            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nemo quibusdam, libero blanditiis fugit at neque laudantium, unde commodi et, assumenda velit a distinctio ipsum cum exercitationem incidunt sapiente deleniti reprehenderit.</p>
+            {data?.map((book) => (
+                <main key={book.id} className="container">
+                    <section>
+                        <p>{book.title}</p>
+                        <p>{book.author}</p>
+                        <p>age: {book.age}</p>
+                        <p>{book.info}</p>
+                        <button>Edit</button>
+                        <button>Delete</button>
+                    </section>
+                </main>
+            ))}
         </React.Fragment>
     );
 };
