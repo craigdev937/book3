@@ -9,8 +9,9 @@ async (): Promise<IBook[]> => {
 };
 
 export const getOneBook =
-async (book: IBook): Promise<IBook> => {
-    const res: Response = await fetch(`${URL}/${book.id}`);
+async ({ queryKey }: any): Promise<IBook> => {
+    const [_key, {id}] = queryKey;
+    const res: Response = await fetch(`${URL}/${id}`);
     if (!res.ok) throw new Error("Something's BAD");
     return res.json();
 };

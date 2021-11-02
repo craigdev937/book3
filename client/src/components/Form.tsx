@@ -4,9 +4,9 @@ import { useForm, SubmitHandler } from "react-hook-form";
 import { IBook } from "../models/IBook";
 
 export const Form = 
-({ defaultValues, onFormSubmit, isLoading }: any) => {
+({ onFormSubmit, isLoading }: any) => {
     const { register, handleSubmit } = 
-        useForm<IBook>({ defaultValues });
+        useForm<IBook>({});
 
     const onSubmit: SubmitHandler<IBook> = (data) => {
         onFormSubmit(data);
