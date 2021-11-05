@@ -1,0 +1,21 @@
+{
+    "compilerOptions": {
+        "moduleResolution": "node",
+        "strict": true,
+        "jsx": "react-jsx",
+        "rootDir": "./src/",
+        "outDir": "./dist/",
+        "forceConsistentCasingInFileNames": true,
+        "isolatedModules": true,
+        "module": "esnext",
+        "target": "es6",
+        "lib": ["dom", "dom.iterable", "es2021"],
+        "allowSyntheticDefaultImports": true,
+        "esModuleInterop": true
+    },
+    "exclude": ["node_modules"],
+    "include": ["./src/**/*"]
+}
+
+
+
