@@ -16,7 +16,7 @@ export const BookAPI = createApi({
                 { type: "Books", id: "LIST" },
             ] : [{ type: "Books", id: "LIST" }],
         }),
-        getOne: builder.query<IBook, number>({
+        getOne: builder.query<IBook, string>({
             query: (id) => `${id}`,
             providesTags: (result, error, id) => 
                 [{ type: "Books", id: id }],
@@ -39,7 +39,7 @@ export const BookAPI = createApi({
             }),
             invalidatesTags: [{ type: "Books", id: "LIST" }],
         }),
-        delete: builder.mutation<IBook, number>({
+        delete: builder.mutation<IBook, string>({
             query: (id) => ({
                 url: `/${id}`,
                 method: "DELETE",

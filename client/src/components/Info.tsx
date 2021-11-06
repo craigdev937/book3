@@ -14,7 +14,6 @@ export const Info = ({ book }: Props): JSX.Element => {
                 </Link>
             </h2>
             <main key={book.id}>
-                <h3>{book.title}</h3>
                 <p>{book.author}</p>
                 <p>{book.age}</p>
                 <p>{book.info}</p>

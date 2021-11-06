@@ -1,17 +1,19 @@
 import React from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, LinkProps, useResolvedPath, useMatch } from "react-router-dom";
 import { BookAPI } from "../global/BookAPI";
 
-export const Edit = ({match}: any): JSX.Element => {
+export const Edit = ({ to }: LinkProps): JSX.Element => {
     const navigate = useNavigate();
-    const bookID = match.params.id;
+    let resolved = useResolvedPath(to);
+    let match = useMatch({ path: resolved.pathname, end: true });
+    const bookID = match?.params.id;
     const [book, setBook] = React.useState({
         id: bookID, title: "", author: "", age: 0, info: ""
     });
 
     const { data: bookData, 
         isSuccess: bookDataReady } = 
-            BookAPI.useGetOneQuery(bookID);
+            BookAPI.useGetOneQuery(bookID!);
 
     const [deleteBook, {
         isLoading: isDeleting, isSuccess: isDeleted
@@ -34,7 +36,7 @@ export const Edit = ({match}: any): JSX.Element => {
     };
 
     const removeBook = () => {
-        deleteBook(bookID);
+        deleteBook(bookID!);
         goBack(700);
     };
     
@@ -79,19 +81,9 @@ export const Edit = ({match}: any): JSX.Element => {
                     />
                 </aside>
                 <aside>
-                    <label htmlFor="author">Author</label>
-                    <input 
-                        type="text" 
-                        name="author"
-                        placeholder="Author"
-                        value={book.author}
-                        onChange={handleChange}
-                    />
-                </aside>
-                <aside>
                     <label htmlFor="age">Age</label>
                     <input 
-                        type="number" 
+                        type="text" 
                         name="age"
                         placeholder="Age"
                         value={book.age}

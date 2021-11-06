@@ -6,7 +6,7 @@ export const Add = (): JSX.Element => {
     const navigate = useNavigate();
     const [addBook] = BookAPI.useAddMutation();
     const [book, setBook] = React.useState({
-        id: 0, title: "", author: "", 
+        id: "", title: "", author: "", 
         age: 0, info: ""
     });
 
@@ -21,7 +21,7 @@ export const Add = (): JSX.Element => {
         event.preventDefault();
         await addBook(book);
         setBook({
-            id: 0, title: "", author: "", 
+            id: "", title: "", author: "", 
             age: 0, info: ""
         });
         navigate("/");
