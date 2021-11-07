@@ -10,7 +10,7 @@ export const AllRoutes = (): JSX.Element => (
             <Routes>
                 <Route path="/" element={<List />} />
                 <Route path="/add" element={<Add />} />
-                <Route path="/edit/:id" element={<Edit to={""} />} />
+                <Route path="/edit/:id" element={<Edit />} />
             </Routes>
         </React.Fragment>
     </BrowserRouter>

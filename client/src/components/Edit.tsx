@@ -1,12 +1,11 @@
 import React from "react";
-import { Link, useNavigate, LinkProps, useResolvedPath, useMatch } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import { BookAPI } from "../global/BookAPI";
 
-export const Edit = ({ to }: LinkProps): JSX.Element => {
+export const Edit = (): JSX.Element => {
     const navigate = useNavigate();
-    let resolved = useResolvedPath(to);
-    let match = useMatch({ path: resolved.pathname, end: true });
-    const bookID = match?.params.id;
+    let match = useParams();
+    const bookID = match.id;
     const [book, setBook] = React.useState({
         id: bookID, title: "", author: "", age: 0, info: ""
     });
